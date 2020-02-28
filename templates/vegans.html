@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
 {% block content%}
-     <h1>Vegans</h1>
+<h2>{{ page_title }}</h2>
+
+{% for member in vegans %}
+<div class="row featurette">
+    
+    <div class="col-md-7">
+        <h3><a href="">{{ member.name }} </a></h3>
+        <p>
+            {{ member.ingredients}}
+        </p>
+        <p>
+            {{ member.description}}
+        </p>
+        <img class="featurette-image img-responsive" src="{{ member.foto}}" style="width:100%;" alt="Generic placeholder image">
+    </div>
+    <div class="col-md-5">
+        <!--<img class="featurette-image img-responsive" src="{{ member.image_source}}" style="width:100%;" alt="Generic placeholder image">-->
+    </div>
+</div>
+<hr class="featurette-divider">
+{% endfor %}
 {% endblock %}

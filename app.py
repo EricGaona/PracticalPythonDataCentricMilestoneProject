@@ -14,27 +14,29 @@ mongo = PyMongo(app)
 def index():
 #    return "<h1>Hello</1><h2> World_3</>" esta es una forma de poner html 
 #    pero no es la mas aducuada. En la linea de abajoveremos otra forma
-     return render_template("index.html") 
+     return render_template("index.html", page_title="Home Page_1") 
      
 
 @app.route('/vegans')
 def vegans():
-    return render_template("vegans.html")
+    return render_template("vegans.html", page_title="Vegans_1",
+                           vegans=mongo.db.vegans.find())
     
 @app.route('/vegetarians')
 def vegetarians():
-    return render_template("vegetarians.html")    
+    return render_template("vegetarians.html", page_title="Vegetarians_1", 
+                           vegetarians=mongo.db.vegetarians.find())    
     
 @app.route('/sharerecipe')
 def sharerecipe():
-    return render_template("sharerecipe.html")  
+    return render_template("sharerecipe.html", page_title="Share Recipe_1")  
     
 @app.route('/cookingtools')
 def cookingtools():
     data =[]
     with open("data/cookingtools.json", "r") as json_data:
          data = json.load(json_data)
-    return render_template("cookingtools.html", page_title="About_2 json", cookingtools=data)
+    return render_template("cookingtools.html", page_title="Cooking Tools_1", cookingtools=data)
     
 
 @app.route('/contact', methods=["GET", "POST"])
@@ -45,7 +47,7 @@ def contact():
         # print(request.form)
         flash ("Thanks {}, we have recived your message!".format(request.form["name"]))
         
-    return render_template("contact.html")
+    return render_template("contact.html", page_title="Contact_1")
     
 if __name__ == '__main__':
     app.run(host=os.environ.get("IP"),

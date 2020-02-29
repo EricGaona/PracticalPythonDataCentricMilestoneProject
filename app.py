@@ -11,6 +11,7 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstclouster-fth3h.mon
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/index')
 def index():
 #    return "<h1>Hello</1><h2> World_3</>" esta es una forma de poner html 
 #    pero no es la mas aducuada. En la linea de abajoveremos otra forma
@@ -31,6 +32,12 @@ def vegetarians():
 def sharerecipe():
     return render_template("sharerecipe.html", page_title="Share Recipe_1")  
     
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    vegans = mongo.db.vegans
+    vegans.insert_one(request.form.to_dict())
+    return redirect(url_for('index'))    
+    
 @app.route('/cookingtools')
 def cookingtools():
     data =[]
@@ -42,12 +49,9 @@ def cookingtools():
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
-        
-        # print("Hello, Is there anybody there? ")  ESTO SE VE EN LA CONSOLA
-        # print(request.form)
         flash ("Thanks {}, we have recived your message!".format(request.form["name"]))
-        
     return render_template("contact.html", page_title="Contact_1")
+    
     
 if __name__ == '__main__':
     app.run(host=os.environ.get("IP"),

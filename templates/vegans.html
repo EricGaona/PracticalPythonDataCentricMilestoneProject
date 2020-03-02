@@ -2,21 +2,25 @@
 {% block content%}
 <h2>{{ page_title }}</h2>
 
-{% for member in vegans %}
+{% for vegan in vegans %}
 <div class="row featurette">
     
     <div class="col-md-7">
-        <h3><a href="">{{ member.name }} </a></h3>
+        <h3><a href="">{{ vegan.name }} </a></h3>
         <p>
-            {{ member.ingredients}}
+            {{ vegan.ingredients}}
         </p>
         <p>
-            {{ member.description}}
+            {{ vegan.description}}
         </p>
-        <img class="featurette-image img-responsive" src="{{ member.foto}}" style="width:100%;" alt="Generic placeholder image">
+        <img class="featurette-image img-responsive" src="{{ vegan.foto}}" style="width:100%;" alt="Generic placeholder image">
     </div>
-    
+    <div class="col-lg-8 col-md-10 mx-auto" >
+     
+      <a href="{{url_for('edit_vegan', vegan_id=vegan._id)}}" >Edit</a>
+    </div>
 </div>
 <hr class="featurette-divider">
 {% endfor %}
+
 {% endblock %}

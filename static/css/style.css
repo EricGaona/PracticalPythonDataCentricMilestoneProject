@@ -1,3 +1,29 @@
 body{
-    background-color: #F1F1F1;
+    background-color: #f1f1f1 ;
+}
+.btnde{
+    margin: 25px 15px;
+}
+.bdelete{
+    background-color: #F28484 ;
+    cursor: pointer ;
+    color: black;
+    margin-right: 25px ;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.bedit{
+    background-color: #2196F3;
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.bedit:hover{
+    background-color: #2196F3;
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

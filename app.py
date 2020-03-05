@@ -12,20 +12,19 @@ mongo = PyMongo(app)
 
 # THIS FUNCTION RETRIEVE THE RECIPES FROM THE DATABASE TO BE USED IN THE index.html
 @app.route('/')
-@app.route('/index')
 def index():
      return render_template("index.html", recipes=mongo.db.recipes.find(), page_title="Home Page_1") 
      
-
-@app.route('/vegans')
-def vegans():
-    return render_template("vegans.html", page_title="Vegans_1",
-                           vegans=mongo.db.vegans.find())
     
-@app.route('/vegetarians')
-def vegetarians():
-    return render_template("vegetarians.html", page_title="Vegetarians_1", 
-                           vegetarians=mongo.db.vegetarians.find())    
+# THIS FUNCTION SEPARATES VEGANS AND VEGETARIAS    
+@app.route('/recipes/<category>')
+def recipes(category):
+    recipes = mongo.db.recipes.find({'category_name': category})
+
+    return render_template('recipe_category.html',
+                  recipes=recipes,
+                  page_title=category.capitalize()
+                 )
 
 # THIS FUNCTION RETRIEVE THE CATEGORIES FROM THE DATABASE TO BE USED IN THE sharerecipe.html    
 @app.route('/sharerecipe')
@@ -49,6 +48,9 @@ def edit_recipe(recipe_id):
     return render_template('editrecipe.html', recipe=the_recipe,
                            categories=all_categories,
                            page_title="Edit Recipe_1") 
+ 
+ 
+ 
                            
 # THIS FUNCTION SEND THE NEW INFORMATION FROM editrecipe.html TO THE DATABASE
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
@@ -64,30 +66,33 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('index')) 
 
+
+
+
+
 # THIS FUNCTION DELETE THE RECIPE FROM THE DATABASE
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('index'))
     
-# THIS IS FOR THE CONFIRMATION BUTTON
-
 
 @app.route('/cookingtools')
 def cookingtools():
     data =[]
     with open("data/cookingtools.json", "r") as json_data:
          data = json.load(json_data)
-    return render_template("cookingtools.html", page_title="Cooking Tools_1", cookingtools=data)
+    return render_template("cookingtools.html", page_title="Cooking Tools", cookingtools=data)
     
 
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
         flash ("Thanks {}, we have recived your message!".format(request.form["name"]))
-    return render_template("contact.html", page_title="Contact_1")
+    return render_template("contact.html", page_title="Contact")
 
   
+    
     
 if __name__ == '__main__':
     app.run(host=os.environ.get("IP"),

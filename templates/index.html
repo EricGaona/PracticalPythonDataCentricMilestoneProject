@@ -24,11 +24,15 @@
          </div>
        </div>
        
-       <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="">Delete</a>
-       </br>
-       <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="">Edit</a>
+      <div class="btnde">
+       <span class="bdelete" onclick="confirmedDelete('{{url_for('delete_recipe', recipe_id=recipe._id)}}')" >Delete</span>
+      
+       
+       <a class="bedit" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit</a>
+       </div>
        <hr class="featurette-divider">
        
+    
     
      {% endfor %} 
        

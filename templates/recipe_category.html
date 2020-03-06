@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% block content%}
-<h2>{{ page_title }}</h2>
-<div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-<p>
-    The formation of the group grew out of a meeting Gandalf had with Thorin in Bree which kindled Thorin's interest in recapturing his long lost family inheritance. Remembering that he had once known an adventurous Hobbit on his travels in The Shire, Gandalf
-    decided to add Bilbo to their company because he knew that stealth and cunning were preferable to force. Gandalf also believed that someone like Bilbo could keep the sometimes prideful and stubborn Dwarves from rash action. The superstitious Dwarves
-    also considered thirteen to be an unlucky number, and as Gandalf had planned to leave on other business, welcomed a fourteenth to fill in to their party.
-</p>
+
+    <h2>{{ page_title }}</h2>
+    
+   
+
   
       {% for recipe in recipes %}
        <div class="row featurette">
@@ -15,7 +12,7 @@
           
              <div class="col-md-7">
                    <h3>
-                        {{ recipe.name }} 
+                        {{ recipe.name.upper() }} 
                    </h3>
                    <h4>Ingredients</h4>
                    <p>
@@ -27,23 +24,27 @@
              </div>
             
              <div class="col-md-12">
+                 <h4>Description</h4>
                  <p>
                     {{ recipe.description}}
                  </p>
              </div>
-       </div>
-       <div class="btnde">
-       <span class="bdelete" onclick="confirmedDelete('{{url_for('delete_recipe', recipe_id=recipe._id)}}')" >Delete</span>
-      
        
-       <a class="bedit" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit</a>
-       </div>
-       <hr class="featurette-divider">
-       
+           <div class="btnde">
+              <span class="bdelete" onclick="confirmedDelete('{{url_for('delete_recipe', recipe_id=recipe._id)}}')" >Delete</span>
+          
+           
+              <a class="bedit" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit</a>
+           </div>
+     </div>  
+      {% if loop.index != loop.length %}
+
+           <hr class="featurette-divider">
+      {% endif %}
     
      {% endfor %} 
        
    
-    </div>
-</div>     
+    
+    
 {% endblock %}

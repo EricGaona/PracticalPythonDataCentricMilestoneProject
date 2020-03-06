@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 # THIS FUNCTION RETRIEVE THE RECIPES FROM THE DATABASE TO BE USED IN THE index.html
 @app.route('/')
 def index():
-     return render_template("index.html", recipes=mongo.db.recipes.find(), page_title="Home Page_1") 
+     return render_template("index.html", recipes=mongo.db.recipes.find(), page_title="Home Page") 
      
     
 # THIS FUNCTION SEPARATES VEGANS AND VEGETARIAS    
@@ -31,7 +31,7 @@ def recipes(category):
 def sharerecipe():
     return render_template("sharerecipe.html", 
                            categories=mongo.db.categories.find(),
-                           page_title="Share Recipe_1")  
+                           page_title="Share Recipe")  
 
 # THIS FUNCTION SEND THE INFORMATION FROM THE sharerecipe.html TO THE DATABASE    
 @app.route('/insert_recipe', methods=['POST'])
@@ -47,7 +47,7 @@ def edit_recipe(recipe_id):
     all_categories =  mongo.db.categories.find()
     return render_template('editrecipe.html', recipe=the_recipe,
                            categories=all_categories,
-                           page_title="Edit Recipe_1") 
+                           page_title="Edit Recipe") 
  
  
  

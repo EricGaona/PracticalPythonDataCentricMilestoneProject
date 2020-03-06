@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content%}
-<h2>{{ page_title }}</h2>
-<div class="row " >
-    
+ <h2>{{ page_title }}</h2> 
+<div class="row featurette">
+  
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-lg-8 col-md-10 mx-auto">
       
       
@@ -18,17 +18,17 @@
   
   <div class="form-group">
     <label for="name">Recipe Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Recipe Name">
+    <input type="text" class="form-control" id="name" name="name">
   </div>
   
   <div class="form-group">
-    <label for="image">Image</label>
+    <label for="image">Image (Paste the link)</label>
     <input type="text" class="form-control-file" id="image" name="image">
   </div>
   
   <div class="form-group">
     <label for="ingredient">ingredients</label>
-    <input type="text" class="form-control" id="ingredient" name="ingredient" placeholder="Recipe Name">
+    <input type="text" class="form-control" id="ingredient" name="ingredient">
   </div>
   
   <div class="form-group">

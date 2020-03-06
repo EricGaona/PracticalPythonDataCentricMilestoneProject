@@ -1,9 +1,8 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h2>{{ page_title }}</h2>
 
-<div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <h2>{{ page_title }}</h2>
+    <div class="row featurette">
         
        {% with messages = get_flashed_messages() %} 
        {% if messages %}
@@ -53,5 +52,5 @@
             </div>
         </form>
     </div>
-</div>
+
 {% endblock %}

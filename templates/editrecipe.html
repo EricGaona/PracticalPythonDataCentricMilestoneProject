@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content%}
 <h2>{{ page_title }}</h2>
-<div class="row " >
+<div class="row featurette">
     
     <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col-lg-8 col-md-10 mx-auto">
       

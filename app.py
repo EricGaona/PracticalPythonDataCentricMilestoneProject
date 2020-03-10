@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = 'some_secret'
 
 app.config["MONGO_DBNAME"] = 'recipe'
 app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstclouster-fth3h.mongodb.net/recipe?retryWrites=true&w=majority'
@@ -12,8 +13,8 @@ mongo = PyMongo(app)
 
 # THIS FUNCTION RETRIEVE THE RECIPES FROM THE DATABASE TO BE USED IN THE index.html
 @app.route('/')
-def index():
-     return render_template("index.html", recipes=mongo.db.recipes.find(), page_title="Home Page") 
+def base():
+     return render_template("base.html", recipes=mongo.db.recipes.find(), page_title="Home Page") 
      
     
 # THIS FUNCTION SEPARATES VEGANS AND VEGETARIAS    
@@ -38,7 +39,7 @@ def sharerecipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
-    return redirect(url_for('index'))  
+    return redirect(url_for('base'))  
     
 # THIS FUNCTION RETRIEVE THE INFORMATION THAT WILL BE EDIT IN THE editrecipe.html    
 @app.route('/edit_recipe/<recipe_id>')
@@ -64,9 +65,7 @@ def update_recipe(recipe_id):
         'ingredient': request.form.get('ingredient'),
         'description': request.form.get('description')
     })
-    return redirect(url_for('index')) 
-
-
+    return redirect(url_for('base')) 
 
 
 
@@ -74,7 +73,7 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('index'))
+    return redirect(url_for('base'))
     
 
 @app.route('/cookingtools')
@@ -83,6 +82,8 @@ def cookingtools():
     with open("data/cookingtools.json", "r") as json_data:
          data = json.load(json_data)
     return render_template("cookingtools.html", page_title="Cooking Tools", cookingtools=data)
+    
+    
     
 
 @app.route('/contact', methods=["GET", "POST"])

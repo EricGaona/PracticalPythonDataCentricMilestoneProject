@@ -8,7 +8,7 @@
       
        <div class="form-check">
         {% for cat in categories %}
-        <input class="form-check-input" type="radio" name="category_name" id="category" value="{{cat.category_name}}">
+        <input class="form-check-input" type="radio" name="category_name" id="category" value="{{cat.category_name}}" checked>
         <label class="form-check-label" for="exampleRadios1">
              {{cat.category_name}}
         </label><br>
@@ -18,22 +18,22 @@
   
   <div class="form-group">
     <label for="name">Recipe Name</label>
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" id="name" name="name" maxlength="30" required >
   </div>
   
   <div class="form-group">
     <label for="image">Image (Paste the link)</label>
-    <input type="text" class="form-control-file" id="image" name="image">
+    <input type="url" class="form-control-file" id="image" name="image" required data-validation-required-message="Please enter url.">
   </div>
   
   <div class="form-group">
     <label for="ingredient">ingredients</label>
-    <input type="text" class="form-control" id="ingredient" name="ingredient">
+    <input type="text" class="form-control" id="ingredient" name="ingredient" maxlength="450" required data-validation-required-message="Please enter ingredients">
   </div>
   
   <div class="form-group">
     <label for="description">description</label>
-    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" name="description" rows="3" maxlength="350" required data-validation-required-message="Please enter description"></textarea>
   </div>
   
   <button type="submit" class="btn btn-primary" >Submit</button>

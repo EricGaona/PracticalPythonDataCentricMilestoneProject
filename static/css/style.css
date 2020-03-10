@@ -27,3 +27,16 @@ body{
     padding: 5px 10px;
     border-radius: 5px;
 }
+footer{
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+footer p{
+    margin: 0;
+    padding: 0;
+}
+.confmes1{
+    background-color: #8DF5CE;
+    border-radius: 4px;
+}

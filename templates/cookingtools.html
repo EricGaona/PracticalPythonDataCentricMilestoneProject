@@ -4,40 +4,29 @@
 <h2>{{ page_title }}</h2>
 
 
-{% for member in cookingtools %}
+{% for ct in cookingtools %}
 <div class="row featurette">
     
-    {% if loop.index % 2 != 0 %}
+    
     
     <div class="col-md-7">
-        <h3><a href="/cookingtools/{{ member.url }}">{{ loop.index}}. {{ member.name }} </a></h3>
+        <h3><a href="/cookingtools/{{ ct.tool }} " class="center_a"> {{ ct.name }} </a></h3>
         <p>
-            {{ member.description}}
+            {{ ct.description}}
         </p>
     </div>
     <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="{{ member.image_source}}" style="width:100%;" alt="Generic placeholder image">
+        <img class="featurette-image img-responsive cont_img" src="{{ ct.image_source}}"  alt="Generic placeholder image">
     </div>
+  
+   
     
-    {% else %}
-    <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="{{ member.image_source}}" style="width:100%;" alt="Generic placeholder image">
-    </div>
-    
-    <div class="col-md-7">
-        <h3><a href="/about2/{{ member.url }}">{{ loop.index}}. {{ member.name }} </a></h3>
-        <p>
-            {{ member.description}}
-        </p>
-    </div>
-    
-    {% endif %}
     
 </div>
 
 {% if loop.index != loop.length %}
 
-<hr class="featurette-divider">
+<hr class="featurette-divider mar_ce_br">
 {% endif %}
 
 {% endfor %}

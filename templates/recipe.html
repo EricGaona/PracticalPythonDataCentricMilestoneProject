@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content%}
+
+    <h2>{{ page_title }}</h2>
+    
+  
+      {% for recipe in recipes %}
+      
+           <div class="row featurette">
+          
+             <div class="col-md-7 mar_ce_a">
+                   <h3>
+                        {{ recipe.name.upper() }} 
+                   </h3>
+                   <h4 class="mar_ce_br">Ingredients</h4>
+                   <p>
+                     {{ recipe.ingredient}}
+                   </p>
+             </div>
+              <div class="col-md-5">
+                  <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}"  alt="Generic placeholder image">
+             </div>
+            
+             <div class="col-md-12">
+                 <h4 class="mar_ce_br">Description</h4>
+                 <p>
+                    {{ recipe.description}}
+                 </p>
+             </div> 
+             
+             {% if recipe.tool %}
+             <div class="col-md-12">
+                 <h4 class="mar_ce_br">Cooking Tools</h4>
+                 <a href="/recipe/{{ recipe.tool }}" class="center_a">
+                    {{ recipe.tool}}
+                 </a>
+             </div>
+            {% endif %}
+           <div class="btnde">
+              <span class="btn btn-primary bdelete" onclick="confirmedDelete('{{url_for('delete_recipe', recipe_id=recipe._id)}}')" >Delete</span>
+          
+           
+              <a class="btn btn-primary" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit</a>
+           </div>
+        </div>
+     
+    
+     {% endfor %} 
+       
+   
+    
+    
+{% endblock %}

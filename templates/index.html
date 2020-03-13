@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content%}
+
+
+  <h2>{{ page_title }}</h2>
+  
+        
+      {% for recipe in recipes %}
+       <div class="row featurette">
+    
+          <div class="col-md-7 mar_ce_a">
+            
+             <a href="/index/{{recipe.name}}" class="center_a">{{ recipe.name.upper() }} </a>
+             
+             
+         </div>
+         <div class="col-md-5">
+             <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}" alt="Generic placeholder image">
+         </div>
+      
+       
+      
+      </div>
+       {% if loop.index != loop.length %}
+
+           <hr class="featurette-divider mar_ce_br">
+       {% endif %}
+    
+    
+     {% endfor %} 
+       
+  
+    
+{% endblock %}

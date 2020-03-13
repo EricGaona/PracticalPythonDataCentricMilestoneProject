@@ -13,8 +13,8 @@ mongo = PyMongo(app)
 
 # THIS FUNCTION RETRIEVE THE RECIPES FROM THE DATABASE TO BE USED IN THE index.html
 @app.route('/')
-def base():
-     return render_template("base.html", recipes=mongo.db.recipes.find(), page_title="Home Page") 
+def index():
+     return render_template("index.html", recipes=mongo.db.recipes.find(), page_title="Home Page") 
      
     
 # THIS FUNCTION SEPARATES VEGANS AND VEGETARIAS    
@@ -39,7 +39,7 @@ def sharerecipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
-    return redirect(url_for('base'))  
+    return redirect(url_for('index'))  
     
 # THIS FUNCTION RETRIEVE THE INFORMATION THAT WILL BE EDIT IN THE editrecipe.html    
 @app.route('/edit_recipe/<recipe_id>')
@@ -50,9 +50,7 @@ def edit_recipe(recipe_id):
                            categories=all_categories,
                            page_title="Edit Recipe") 
  
- 
- 
-                           
+
 # THIS FUNCTION SEND THE NEW INFORMATION FROM editrecipe.html TO THE DATABASE
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -65,17 +63,36 @@ def update_recipe(recipe_id):
         'ingredient': request.form.get('ingredient'),
         'description': request.form.get('description')
     })
-    return redirect(url_for('base')) 
-
-
-
+    return redirect(url_for('index')) 
+    
+    
+  
 # THIS FUNCTION DELETE THE RECIPE FROM THE DATABASE
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('base'))
+    return redirect(url_for('index'))
     
+    
+# THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html
+@app.route('/index/<name>')
+def recipe_index(name):
+     return render_template("recipe.html", 
+                            recipes=mongo.db.recipes.find({'name': name}), 
+                            page_title="Recipe")
+                            
+                            
+# THIS FUNCTION SHOWS THE SELECTED RECIPE IN recipe_category.html
+@app.route('/recipe_category/<name>')
+def recipe(name):
+     return render_template("recipe.html", 
+                            recipes=mongo.db.recipes.find({'name': name}), 
+                            page_title="Recipe")
 
+
+
+
+# THIS FUNCTION RETRIEVE ALL THE COOKING TOOLS FROM THE cookingtools.json AND SHOWS IN THE cookingtools.html
 @app.route('/cookingtools')
 def cookingtools():
     data =[]
@@ -84,7 +101,34 @@ def cookingtools():
     return render_template("cookingtools.html", page_title="Cooking Tools", cookingtools=data)
     
     
+# THIS FUNCTION RECEIVES THE TOOL SELECTED IN recipe.html AND SHOWS IN THE tool.html    
+@app.route('/recipe/<tool>')
+def tool_1(tool):
+    item = {}
     
+    with open("data/cookingtools.json", "r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj ["tool"] == tool:
+                item = obj
+                
+    return render_template("tool.html", item=item)   
+  
+  
+# THIS FUNCTION RECEIVES THE TOOL SELECTED IN cookingtools.html AND SHOWS IN THE tool.html
+@app.route('/cookingtools/<tool>')
+def tool_2(tool):
+    item = {}
+    
+    with open("data/cookingtools.json", "r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj ["tool"] == tool:
+                item = obj
+                
+    return render_template("tool.html", item=item)      
+    
+
 
 @app.route('/contact', methods=["GET", "POST"])
 def contact():

@@ -2,7 +2,8 @@
 {% block content%}
 <h2>{{ page_title }}</h2>
 <div class="row featurette">
-    
+  
+  
     <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col-lg-8 col-md-10 mx-auto">
       
       
@@ -37,8 +38,8 @@
   </div>
   
   <div class="form-group">
-    <label for="ingredient">ingredients</label>
-    <input type="text" class="form-control" id="ingredient" name="ingredient" value="{{recipe.ingredient}}" maxlength="450" checked>
+    <label for="ingredient">ingredients (Separate each ingredient by comma (,))</label>
+    <textarea class="form-control" id="ingredient" name="ingredient" rows="3" value="{{recipe.ingredient}}" maxlength="450" checked>{{recipe.ingredient}}</textarea>
   </div>
   
   <div class="form-group">

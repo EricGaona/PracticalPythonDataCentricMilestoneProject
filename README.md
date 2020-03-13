@@ -68,7 +68,7 @@ The Contact Page features a contact form, which requests the name of the person,
 * Configure the database so users can upload photos of recipes as currently the only way to have a photo is by storing an image link. 
 * Create an interface for when a user shares a recipe the interface sends a message to the admin to confirm the recipe. 
 * Option to choose the language of the website as the admin’s first language is Spanish, this would allow Spanish speaking users to view in their native language.
-
+* Create a pagination for the recipes
 
 ## Technologies Used
 
@@ -87,9 +87,9 @@ This project uses:
 
 ## Testing
 
-W3C CSS Validation
+* [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
 
-W3C Markup Validation
+* [W3C Markup Validation](https://validator.w3.org/)
 
 Vegetarian and Vegan:
 
@@ -102,7 +102,7 @@ Share Recipe:
 The Share Recipe tab takes the user to a form.  Every section of the form is compulsory to be completed in order to share a recipe. The Name of Recipe box only accepts a maximum of 30 characters.  The image should be a URL.  The ingredients a maximum of 450 characters and the description a maximum of 350 characters. 
 At the bottom, there is a submit button to save and share recipe. When the Submit button is clicked it sends the information to the database and then redirects the user to the homepage. 
 
-
+This website was tested across multiple browsers including Chrome, Opera, Internet Explorer, Firefox and on multiple movie devices including iPhone 4, 5, and 7.  Also on Samsung and Xaomi to ensure compatibility and responsiveness.
 
 
 

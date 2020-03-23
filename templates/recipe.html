@@ -13,9 +13,13 @@
                         {{ recipe.name.upper() }} 
                    </h3>
                    <h4 class="mar_ce_br">Ingredients</h4>
-                   <p>
-                     {{ recipe.ingredient}}
-                   </p>
+                     <ul class="ing_ul">
+                      {% for ingredient in recipe.ingredient.split("\n") %}
+                        <li class="font_type">
+                        {{ ingredient }}
+                         </li>
+                      {% endfor %} 
+                      </ul>
              </div>
               <div class="col-md-5">
                   <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}"  alt="Generic placeholder image">
@@ -23,7 +27,7 @@
             
              <div class="col-md-12">
                  <h4 class="mar_ce_br">Description</h4>
-                 <p>
+                 <p class="font_type">
                     {{ recipe.description}}
                  </p>
              </div> 

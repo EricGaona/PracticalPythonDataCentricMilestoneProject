@@ -52,3 +52,19 @@ footer p{
 h2{
     margin-bottom: 70px;
 }
+.error_conf{
+    color: white;
+    background-color: #F28484;
+    border: 1px solid red;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 5px;
+}
+.ing_ul{
+   list-style: none;
+    padding-left: 0px;
+}
+.font_type{
+   
+    font-family: 'Roboto Mono', monospace, sans-serif;
+}

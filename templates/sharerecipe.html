@@ -2,9 +2,9 @@
 {% block content%}
  <h2>{{ page_title }}</h2> 
 <div class="row featurette">
-  
+     
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-lg-12 col-md-12 mx-auto">
-      
+     
        <label for="name">CATEGORY</label>
        <div class="form-check">
          
@@ -16,25 +16,34 @@
         {% endfor %}
        
      </div>    
-  
+   
   <div class="form-group">
     <label for="name">NAME</label>
-    <input type="text" class="form-control" id="name" name="name" maxlength="30" placeholder="e.g. Pasta Carbonara"  required >
+    <input type="text" class="form-control" id="name" name="name"  placeholder="e.g. Pasta Carbonara" required>
+     {% if errorName %}
+      <div class="error_conf">{{ errorName }}</div>
+      {% endif %}
   </div>
   
   <div class="form-group">
     <label for="image">IMAGE</label>
-    <input type="url" class="form-control" id="image" name="image" placeholder="Paste link to recipe image" required data-validation-required-message="Please enter url.">
+    <input type="url" class="form-control" id="image" name="image" placeholder="Paste link to recipe image" required >
   </div>
   
   <div class="form-group">
     <label for="ingredient">INGREDIENTS</label>
-     <textarea class="form-control" id="ingredient" name="ingredient" placeholder="Enter recipe ingredients (Separate each ingredient by comma (,))" rows="3" maxlength="450" required data-validation-required-message="Please enter description"></textarea>
+     <textarea class="form-control" id="ingredient" name="ingredient" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" required></textarea>
+      {% if errorIngredient %}
+      <span class="error_conf">{{ errorIngredient }}</span>
+      {% endif %}
     </div>
   
   <div class="form-group">
     <label for="description">DESCRIPTION</label>
-    <textarea class="form-control" id="description" name="description" placeholder="Enter a short recipe description" rows="3" maxlength="350" required data-validation-required-message="Please enter description"></textarea>
+    <textarea class="form-control" id="description" name="description" placeholder="Enter a short recipe description" rows="3" required></textarea>
+     {% if errorDescription %}
+      <span class="error_conf">{{ errorDescription }}</span>
+      {% endif %}
   </div>
   
   <button type="submit" class="btn btn-primary" >Submit Recipe</button>

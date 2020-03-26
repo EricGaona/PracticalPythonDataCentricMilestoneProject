@@ -1,6 +1,8 @@
 body{
     background-color: #f1f1f1 ;
+    font-family: 'Open Sans', sans-serif !important;
 }
+
 .btnde{
     margin: 25px 15px;
 }
@@ -64,7 +66,6 @@ h2{
    list-style: none;
     padding-left: 0px;
 }
-.font_type{
-   
-    font-family: 'Roboto Mono', monospace, sans-serif;
+a{
+    background-color: red;
 }

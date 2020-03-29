@@ -8,14 +8,25 @@
       {% for recipe in recipes %}
        <div class="row featurette">
     
-          <div class="col-md-7 mar_ce_a">
-            
-             <a href="/index/{{recipe.name}}" class="center_a">{{ recipe.name.upper() }} </a>
-             
+          <div class="col-md-12 mar_ce_a">
+            <h3>
+             <a href="/recipe/{{recipe.name}}" class="center_a">
+                 {{ recipe.name.upper() }} 
+             </a>
+            </h3> 
              
          </div>
+         
+         <div class="col-md-7 mar_ce_a">
+              <p>
+                 {{ recipe.description}}
+               </p>
+          </div>
+         
          <div class="col-md-5">
+           <a href="/recipe/{{recipe.name}}" class="center_a" >
              <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}" alt="Generic placeholder image">
+            </a>
          </div>
       
        

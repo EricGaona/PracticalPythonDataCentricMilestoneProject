@@ -8,29 +8,32 @@
       
            <div class="row featurette">
           
-             <div class="col-md-7 mar_ce_a">
+             <div class="col-md-12 mar_ce_a">
                    <h3>
                         {{ recipe.name.upper() }} 
                    </h3>
-                   <h4 class="mar_ce_br">Ingredients</h4>
-                     <ul class="ing_ul">
-                      {% for ingredient in recipe.ingredient.split("\n") %}
-                        <li>
-                        {{ ingredient }}
-                         </li>
-                      {% endfor %} 
-                      </ul>
-             </div>
-              <div class="col-md-5">
-                  <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}"  alt="Generic placeholder image">
-             </div>
+            </div>       
             
-             <div class="col-md-12">
-                 <h4 class="mar_ce_br">Description</h4>
+            <div class="col-md-7 mar_ce_a">
                  <p class="font_type">
                     {{ recipe.description}}
                  </p>
-             </div> 
+             </div>        
+                   
+             <div class="col-md-5">
+                  <img class="featurette-image img-responsive cont_img" src="{{ recipe.image}}"  alt="Generic placeholder image">
+             </div>       
+             
+            <div class="col-md-5">       
+                   <h4 class="mar_ce_br">Ingredients</h4>
+                     <ul class="ing_ul">
+                      {% for ingredients in recipe.ingredients.split("\n") %}
+                        <li>
+                        {{ ingredients }}
+                         </li>
+                      {% endfor %} 
+                     </ul>
+            </div> 
              
              {% if recipe.tool %}
              <div class="col-md-12">

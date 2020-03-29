@@ -21,9 +21,6 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                    </li>
                
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('recipes', category='vegan') }}">Vegan</a>
@@ -34,11 +31,11 @@
                     </li>
              
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('sharerecipe') }}">Share Recipe</a>
+                        <a class="nav-link" href="{{ url_for('share_recipe') }}">Share Recipe</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('cookingtools') }}">Cooking Tools</a>
+                        <a class="nav-link" href="{{ url_for('cooking_tools') }}">Cooking Tools</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>

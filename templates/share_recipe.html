@@ -16,7 +16,7 @@
         {% endfor %}
        
      </div>    
-   
+    <br>
   <div class="form-group">
     <label for="name">NAME</label>
     <input type="text" class="form-control" id="name" name="name"  placeholder="e.g. Pasta Carbonara" required>
@@ -24,12 +24,12 @@
       <div class="error_conf">{{ errorName }}</div>
       {% endif %}
   </div>
-  
+  <br>
   <div class="form-group">
     <label for="image">IMAGE</label>
     <input type="url" class="form-control" id="image" name="image" placeholder="Paste link to recipe image" required >
   </div>
-  
+  <br>
   <div class="form-group">
     <label for="ingredient">INGREDIENTS</label>
      <textarea class="form-control" id="ingredient" name="ingredient" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" required></textarea>
@@ -37,7 +37,7 @@
       <span class="error_conf">{{ errorIngredient }}</span>
       {% endif %}
     </div>
-  
+  <br>
   <div class="form-group">
     <label for="description">DESCRIPTION</label>
     <textarea class="form-control" id="description" name="description" placeholder="Enter a short recipe description" rows="3" required></textarea>
@@ -45,7 +45,7 @@
       <span class="error_conf">{{ errorDescription }}</span>
       {% endif %}
   </div>
-  
+  <br>
   <button type="submit" class="btn btn-primary" >Submit Recipe</button>
 </form>
     

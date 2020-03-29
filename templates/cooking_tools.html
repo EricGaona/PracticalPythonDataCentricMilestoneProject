@@ -10,13 +10,15 @@
     
     
     <div class="col-md-7">
-        <h3><a href="/cookingtools/{{ ct.tool }} " class="center_a"> {{ ct.name }} </a></h3>
+        <h3><a href="/cooking_tools/{{ ct.tool }} " class="center_a"> {{ ct.name }} </a></h3>
         <p>
             {{ ct.description}}
         </p>
     </div>
     <div class="col-md-5">
-        <img class="featurette-image img-responsive cont_img" src="{{ ct.image_source}}"  alt="Generic placeholder image">
+        <a href="/cooking_tools/{{ ct.tool }} ">
+            <img class="featurette-image img-responsive cont_img" src="{{ ct.image_source}}"  alt="Generic placeholder image">
+        </a>
     </div>
   
    

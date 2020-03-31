@@ -44,35 +44,45 @@ def share_recipe():
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     """
-    THIS FUNCTION SEND THE INFORMATION FROM THE sharerecipe.html TO THE DATABASE 
+    THIS FUNCTION SEND THE INFORMATION FROM THE share_recipe.html TO THE DATABASE 
     AND VALIDATED THE NAME, INGREDIENT AND DESCRIPTION
     """
     recipes = mongo.db.recipes
     name = request.form["name"]
     ingredients = request.form["ingredients"]
     description = request.form["description"]
+    instructions = request.form["instructions"]
+    
     error_name = ""
     error_ingredients = ""
     error_description = ""
+    error_instructions = ""
     error_found = False
     
-    if len(name) == 0 or len(name) > 30:
+    if len(name) < 1 or len(name) > 30 or name.isalpha() == False:
         error_found = True
         error_name = "The name should not be empty or longer than 30 characters long."
    
-    if len(ingredients) == 0 or len(ingredients) > 450:
+    if len(ingredients) == "" or len(ingredients) > 450:
         error_found = True    
         error_ingredients = "The ingredient should not be empty or longer than 450 characters long."
     
-    if len(description) == 0 or len(description) > 350:
+    if len(description) == "" or len(description) > 350:
         error_found = True
         error_description = "The description should not be empty or longer than 350 characters long."
+        
+    if len(instructions) == "" or len(instructions) > 450:
+        error_found = True
+        error_instructions = "The instructions should not be empty or longer than 450 characters long."
     
     if error_found:  
-       
-        return render_template("sharerecipe.html", error_name=error_name, 
+        
+        return render_template("share_recipe.html", error_name=error_name, 
                                 error_ingredients=error_ingredients, 
-                                error_description=error_description )
+                                error_description=error_description,
+                                error_instructions=error_instructions,
+                                categories=mongo.db.categories.find(),
+                                page_title="Add Recipe")
     else:
         recipes.insert_one(request.form.to_dict())
         return redirect(url_for("index"))  
@@ -85,7 +95,7 @@ def edit_recipe(recipe_id):
     """
     the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     all_categories =  mongo.db.categories.find()
-    return render_template("editrecipe.html", recipe=the_recipe,
+    return render_template("edit_recipe.html", recipe=the_recipe,
                            categories=all_categories,
                            page_title="Edit Recipe") 
  
@@ -103,9 +113,11 @@ def update_recipe(recipe_id):
     name = request.form["name"]
     ingredients = request.form["ingredients"]
     description = request.form["description"]
+    instructions = request.form["instructions"]
     error_name = ""
     error_ingredients = ""
     error_description = ""
+    error_instructions = ""
     error_found = False
     
     if len(name) == 0 or len(name) > 30:
@@ -119,12 +131,17 @@ def update_recipe(recipe_id):
     if len(description) == 0 or len(description) > 350:
         error_found = True
         error_description = "The description should not be empty or longer than 350 characters long."
+        
+    if len(instructions) == 0 or len(instructions) > 450:
+        error_found = True    
+        error_instructions = "The instructions should not be empty or longer than 450 characters long."
     
     if error_found: 
         
         return render_template("edit_recipe.html", recipe=the_recipe, categories=all_categories,
                                 error_name=error_name, error_ingredients=error_ingredients, 
-                                error_description=error_description)
+                                error_instructions=error_instructions, 
+                                error_description=error_description, page_title="Edit Recipe")
     else:
         recipes.update( {"_id": ObjectId(recipe_id)},
         {
@@ -132,7 +149,8 @@ def update_recipe(recipe_id):
             "name":request.form.get("name"),
             "image":request.form.get("image"),
             "ingredients": request.form.get("ingredients"),
-            "description": request.form.get("description")
+            "description": request.form.get("description"),
+            "instructions": request.form.get("instructions")
         })
         
         return redirect(url_for("index")) 

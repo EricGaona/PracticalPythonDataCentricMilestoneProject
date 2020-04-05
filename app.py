@@ -59,19 +59,19 @@ def insert_recipe():
     error_instructions = ""
     error_found = False
     
-    if len(name) < 1 or len(name) > 30 or name.isalpha() == False:
+    if len(name) == 0 or len(name) > 30 or name.isspace() == True:
         error_found = True
         error_name = "The name should not be empty or longer than 30 characters long."
    
-    if len(ingredients) == "" or len(ingredients) > 450:
+    if len(ingredients) == 0 or len(ingredients) > 450 or ingredients.isspace() == True:
         error_found = True    
         error_ingredients = "The ingredient should not be empty or longer than 450 characters long."
     
-    if len(description) == "" or len(description) > 350:
+    if len(description) == 0 or len(description) > 300 or description.isspace() == True:
         error_found = True
-        error_description = "The description should not be empty or longer than 350 characters long."
+        error_description = "The description should not be empty or longer than 300 characters long."
         
-    if len(instructions) == "" or len(instructions) > 450:
+    if len(instructions) == 0 or len(instructions) > 450 or instructions.isspace() == True:
         error_found = True
         error_instructions = "The instructions should not be empty or longer than 450 characters long."
     
@@ -120,19 +120,19 @@ def update_recipe(recipe_id):
     error_instructions = ""
     error_found = False
     
-    if len(name) == 0 or len(name) > 30:
+    if len(name) == 0 or len(name) > 30 or name.isspace() == True:
         error_found = True
         error_name = "The name should not be empty or longer than 30 characters long."
     
-    if len(ingredients) == 0 or len(ingredients) > 450:
+    if len(ingredients) == 0 or len(ingredients) > 450 or ingredients.isspace() == True:
         error_found = True    
         error_ingredients = "The ingredient should not be empty or longer than 450 characters long."
     
-    if len(description) == 0 or len(description) > 350:
+    if len(description) == 0 or len(description) > 300 or description.isspace() == True:
         error_found = True
-        error_description = "The description should not be empty or longer than 350 characters long."
+        error_description = "The description should not be empty or longer than 300 characters long."
         
-    if len(instructions) == 0 or len(instructions) > 450:
+    if len(instructions) == 0 or len(instructions) > 450 or instructions.isspace() == True:
         error_found = True    
         error_instructions = "The instructions should not be empty or longer than 450 characters long."
     
@@ -166,14 +166,14 @@ def delete_recipe(recipe_id):
     
     
 
-@app.route("/recipe/<name>")
-def recipe(name):
+@app.route("/recipe/<recipe_id>")
+def recipe(recipe_id):
     """
-    THIS FUNCTION SHOWS THE SELECTED RECIPE IN recipe_category.html
+    THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html AND recipe_category.html   YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
     """
-   
-    return render_template("recipe.html", 
-                            recipes=mongo.db.recipes.find({"name": name}))
+    the_recipe_id =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_recipes=mongo.db.recipes.find()
+    return render_template("recipe.html", the_recipe_id=the_recipe_id, all_recipes=all_recipes ) 
 
 
 @app.route("/cooking_tools")
@@ -186,27 +186,16 @@ def cooking_tools():
          data = json.load(json_data)
     return render_template("cooking_tools.html", page_title="Cooking Tools", cookingtools=data)
     
-   
-@app.route("/recipe/<tool>")
-def tool_recipe(tool):
-    """
-    THIS FUNCTION RECEIVES THE TOOL SELECTED IN recipe.html AND SHOWS IN THE tool.html
-    """
-    item = {}
-    with open("data/cooking_tools.json", "r") as json_data:
-        data = json.load(json_data)
-        for obj in data:
-            if obj ["tool"] == tool:
-                item = obj
-                
-    return render_template("tool.html", item=item)   
-  
 
 @app.route("/cooking_tools/<tool>")
 def tool_cookingtools(tool):
     """
     THIS FUNCTION RECEIVES THE TOOL SELECTED IN cookingtools.html AND SHOWS IN THE tool.html
     """
+    recipes = mongo.db.recipes.find()
+
+    print("hola_1")
+ 
     item = {}
     
     with open("data/cooking_tools.json", "r") as json_data:
@@ -215,7 +204,7 @@ def tool_cookingtools(tool):
             if obj ["tool"] == tool:
                 item = obj
                 
-    return render_template("tool.html", item=item)      
+    return render_template("tool.html", item = item, all_recipes = recipes)      
     
 
 

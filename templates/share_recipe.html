@@ -1,60 +1,60 @@
 {% extends 'base.html' %}
 {% block content%}
- <h2>{{ page_title }}</h2> 
+<h2>{{ page_title }}</h2>
 <div class="row featurette">
-     
+
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-lg-12 col-md-12 mx-auto">
-     
-       <label for="name">CATEGORY</label>
-       <div class="form-check">
-         
+
+        <label for="name">CATEGORY</label>
+        <div class="form-check">
+
             {% for cat in categories %}
             <input class="form-check-input" type="radio" name="category_name" id="category" value="{{cat.category_name}}" checked>
             <label class="form-check-label" for="exampleRadios1">
-                 {{cat.category_name.capitalize()}}
+                {{cat.category_name.capitalize()}}
             </label><br>
             {% endfor %}
-         
-     </div>    
-    <br>
-  <div class="form-group">
-    <label for="name">NAME</label>
-    <input type="text" class="form-control" id="name" name="name"  placeholder="e.g. Pasta Carbonara">
-     {% if error_name %}
-      <div class="error_conf">{{ error_name }}</div>
-      {% endif %}
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="image">IMAGE</label>
-    <input type="url" class="form-control" id="image" name="image" placeholder="Paste link to recipe image" >
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="ingredients">INGREDIENTS</label>
-     <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" ></textarea>
-      {% if error_ingredients %}
-      <span class="error_conf">{{ error_ingredients }}</span>
-      {% endif %}
-    </div>
-  <br>
-  <div class="form-group">
-    <label for="description">DESCRIPTION</label>
-    <textarea class="form-control" id="description" name="description" placeholder="Enter a short recipe description" rows="3" ></textarea>
-     {% if error_description %}
-      <span class="error_conf">{{ error_description }}</span>
-      {% endif %}
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="instructions">INSTRUCTIONS</label>
-     <textarea class="form-control" id="instructions" name="instructions" placeholder="Enter recipe instructions (Separate each instruction on a new line by hitting the enter key after each ingredient)" rows="3"></textarea>
-      {% if error_instructions %}
-      <span class="error_conf">{{ error_instructions }}</span>
-      {% endif %}
-    </div>
-  <button type="submit" class="btn btn-primary" >Submit Recipe</button>
-</form>
-    
+
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="name">NAME</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Pasta Carbonara" maxlength="30" required>
+            {% if error_name %}
+            <div class="error_conf">{{ error_name }}</div>
+            {% endif %}
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="image">IMAGE</label>
+            <input type="url" class="form-control" id="image" name="image" placeholder="Paste link to recipe image" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="ingredients">INGREDIENTS</label>
+            <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="450" required></textarea>
+            {% if error_ingredients %}
+            <span class="error_conf">{{ error_ingredients }}</span>
+            {% endif %}
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="description">DESCRIPTION</label>
+            <textarea class="form-control" id="description" name="description" placeholder="Enter a short recipe description" rows="3" maxlength="300" required></textarea>
+            {% if error_description %}
+            <span class="error_conf">{{ error_description }}</span>
+            {% endif %}
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="instructions">INSTRUCTIONS</label>
+            <textarea class="form-control" id="instructions" name="instructions" placeholder="Enter recipe instructions (Separate each instruction on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="450" required></textarea>
+            {% if error_instructions %}
+            <span class="error_conf">{{ error_instructions }}</span>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Recipe</button>
+    </form>
+
 </div>
 {% endblock %}

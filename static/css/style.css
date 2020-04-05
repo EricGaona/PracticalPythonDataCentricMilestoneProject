@@ -1,60 +1,68 @@
-body{
-    background-color: #f1f1f1 ;
+body {
+    background-color: #f1f1f1;
     font-family: 'Open Sans', sans-serif !important;
 }
 
-.btnde{
+.btnde {
     margin: 25px 15px;
 }
-.bdelete{
-    background-color: #F28484 ;
+
+.bdelete {
+    background-color: #F28484;
     border-color: #F28484 !important;
-    cursor: pointer ;
-    margin-right: 30px; 
+    cursor: pointer;
+    margin-right: 30px;
 }
 
-.bdelete:hover{
+.bdelete:hover {
     background-color: red !important;
     border-color: red !important;
 }
-footer{
+
+footer {
     height: 30px;
     margin: 0;
     padding: 0;
 }
-footer p{
+
+footer p {
     margin: 0;
     padding: 0;
 }
-.confmes1{
+
+.confmes1 {
     background-color: #8DF5CE;
     border-radius: 4px;
 }
 
-.cont_img{
+.cont_img {
     width: 250px;
     overflow-x: hidden;
     height: 250px;
     overflow-y: hidden;
 }
 
-.center_a{
-   text-decoration: none;
-}
-.center_a:hover{
-   text-decoration: none;
+.center_a {
+    text-decoration: none;
 }
 
-.mar_ce_a{
+.center_a:hover {
+    text-decoration: none;
+}
+
+.mar_ce_a {
     margin-bottom: 20px;
 }
-.mar_ce_br{
+
+.mar_ce_br {
     margin: 20px 0px;
 }
-h2{
+
+h2 {
     margin-bottom: 70px;
 }
-.error_conf{
+
+.error_conf {
     color: white;
     background-color: #F28484;
     border: 1px solid red;
@@ -62,10 +70,12 @@ h2{
     border-radius: 4px;
     padding: 5px;
 }
-.ing_ul{
-   list-style: none;
+
+.ing_ul {
+    list-style: none;
     padding-left: 0px;
 }
-p{
+
+p {
     margin-top: 0;
 }

@@ -4,6 +4,7 @@
 
 <div class="row featurette">
     <div class="col-md-12">
+        
         <h3>{{ item.name }}</h3>
     </div>    
     <div class="col-md-7">
@@ -11,11 +12,22 @@
     </div>
     <div class="col-md-5">
         <img src="{{ item.image_source }}" class="featurette-image img-responsive cont_img" alt="Profile image for {{item.name}}" />
-    </div>    
+    </div> 
+    <br>
+    <ul>
+   
+    {% for recipe in all_recipes  %}
+      
+       
+        {% if item.name == recipe.tool %}
+        
     
-     <br>
-
-
+                    <li> {{ recipe.name }} </li>
+        {% endif %}
+   
+    {% endfor %}
+    
+    </ul>
 </div>
 {% endblock %}
 

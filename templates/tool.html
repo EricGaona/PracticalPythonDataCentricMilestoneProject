@@ -14,20 +14,24 @@
         <img src="{{ item.image_source }}" class="featurette-image img-responsive cont_img" alt="Profile image for {{item.name}}" />
     </div> 
     <br>
-    <ul>
-   
-    {% for recipe in all_recipes  %}
-      
-       
-        {% if item.name == recipe.tool %}
-        
     
-                    <li> {{ recipe.name }} </li>
-        {% endif %}
+    <div class="col-md-12 remove_font_size">
    
+     
+    {% for recipe in all_recipes  %}
+        {% if loop.index == 1 %}
+            <hr class="col-md-12 featurette-divider mar_ce_br">
+            <h4>More ideas for your {{ item.name }} </h4>
+         {% endif %}
+         <div class="col-xs-9 col-sm-6 col-md-4 div_inline">
+          <a href="/recipe/{{recipe._id}}" class="center_a"><div class="add_font_size"> {{ recipe.name.upper() }} </div></a>
+        <div>
+            <img class="featurette-image img-responsive img_recipe_tool" src="{{ recipe.image}}" alt="Generic placeholder image">
+        </div>
+        </div>
     {% endfor %}
     
-    </ul>
+    </div>
 </div>
 {% endblock %}
 

@@ -70,12 +70,31 @@ h2 {
     border-radius: 4px;
     padding: 5px;
 }
-
-.ing_ul {
-    list-style: none;
-    padding-left: 0px;
+.align_li{
+     padding-left: 22px;
 }
-
 p {
     margin-top: 0;
+}
+.remove_font_size{
+     font-size: 0px;
+}
+.div_inline{
+    display: inline-block;
+    margin: 10px 0px
+}
+.img_recipe_tool{
+     width: 150px;
+    overflow-x: hidden;
+    height: 150px;
+    overflow-y: hidden;
+    margin: 10px 0px;
+}
+
+.add_font_size{
+    display: inline;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 3px;
+   
 }

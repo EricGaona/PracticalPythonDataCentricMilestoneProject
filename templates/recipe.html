@@ -25,7 +25,7 @@
 
     <div class="col-md-5">
         <h4 class="mar_ce_br">Ingredients</h4>
-        <ul class="ing_ul">
+        <ul class="align_li">
             {% for ingredients in recipe.ingredients.split("\n") %}
             <li>
                 {{ ingredients }}
@@ -37,7 +37,7 @@
     {% if recipe.tool %}
     <div class="col-md-12">
         <h4 class="mar_ce_br">Cooking Tools</h4>
-        <ul class="ing_ul">
+        <ul style="list-style-type:square;" class="align_li">
             {% for tool in recipe.tool.split(",") %}
             
                
@@ -57,13 +57,13 @@
 
     <div class="col-md-12">
         <h4 class="mar_ce_br">Instructions</h4>
-        <ul class="ing_ul">
+        <ol class="align_li">
             {% for instructions in recipe.instructions.split("\n") %}
             <li>
                 {{ instructions }}
             </li>
             {% endfor %}
-        </ul>
+        </ol>
     </div>
 
     <div class="btnde">

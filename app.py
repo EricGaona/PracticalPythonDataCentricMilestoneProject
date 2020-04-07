@@ -163,13 +163,11 @@ def delete_recipe(recipe_id):
     """
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     return redirect(url_for("index"))
-    
-    
 
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     """
-    THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html AND recipe_category.html   YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+    THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html AND recipe_category.html   
     """
     the_recipe_id =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     all_recipes=mongo.db.recipes.find()
@@ -190,21 +188,31 @@ def cooking_tools():
 @app.route("/cooking_tools/<tool>")
 def tool_cookingtools(tool):
     """
-    THIS FUNCTION RECEIVES THE TOOL SELECTED IN cookingtools.html AND SHOWS IN THE tool.html
+    THIS FUNCTION RECEIVES THE TOOL SELECTED IN cookingtools.html AND IN THE recipe.html AND SHOWS IN THE tool.html
     """
     recipes = mongo.db.recipes.find()
-
-    print("hola_1")
+    recipes_to_display =[]
+    for recipe in recipes:
+        if 'tool' in recipe:
+            tools = recipe['tool'].split(",")
+            if tool in tools:
+                recipes_to_display.append(recipe)
  
     item = {}
     
     with open("data/cooking_tools.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
+            """
+            tools = [x for x in obj["tool"].split(",")]
+            for x in tools:
+                 if x == tool:
+                    item = x
+            """
             if obj ["tool"] == tool:
                 item = obj
                 
-    return render_template("tool.html", item = item, all_recipes = recipes)      
+    return render_template("tool.html", item = item, all_recipes = recipes_to_display)      
     
 
 

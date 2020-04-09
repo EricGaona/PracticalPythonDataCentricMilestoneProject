@@ -63,17 +63,17 @@ def insert_recipe():
         error_found = True
         error_name = "The name should not be empty or longer than 30 characters long."
    
-    if len(ingredients) == 0 or len(ingredients) > 450 or ingredients.isspace() == True:
+    if len(ingredients) == 0 or len(ingredients) > 1500 or ingredients.isspace() == True:
         error_found = True    
-        error_ingredients = "The ingredient should not be empty or longer than 450 characters long."
+        error_ingredients = "The ingredient should not be empty or longer than 1500 characters long."
     
     if len(description) == 0 or len(description) > 300 or description.isspace() == True:
         error_found = True
         error_description = "The description should not be empty or longer than 300 characters long."
         
-    if len(instructions) == 0 or len(instructions) > 450 or instructions.isspace() == True:
+    if len(instructions) == 0 or len(instructions) > 2000 or instructions.isspace() == True:
         error_found = True
-        error_instructions = "The instructions should not be empty or longer than 450 characters long."
+        error_instructions = "The instructions should not be empty or longer than 2000 characters long."
     
     if error_found:  
         
@@ -124,17 +124,17 @@ def update_recipe(recipe_id):
         error_found = True
         error_name = "The name should not be empty or longer than 30 characters long."
     
-    if len(ingredients) == 0 or len(ingredients) > 450 or ingredients.isspace() == True:
+    if len(ingredients) == 0 or len(ingredients) > 1500 or ingredients.isspace() == True:
         error_found = True    
-        error_ingredients = "The ingredient should not be empty or longer than 450 characters long."
+        error_ingredients = "The ingredient should not be empty or longer than 1500 characters long."
     
     if len(description) == 0 or len(description) > 300 or description.isspace() == True:
         error_found = True
         error_description = "The description should not be empty or longer than 300 characters long."
         
-    if len(instructions) == 0 or len(instructions) > 450 or instructions.isspace() == True:
+    if len(instructions) == 0 or len(instructions) > 2000 or instructions.isspace() == True:
         error_found = True    
-        error_instructions = "The instructions should not be empty or longer than 450 characters long."
+        error_instructions = "The instructions should not be empty or longer than 2000 characters long."
     
     if error_found: 
         

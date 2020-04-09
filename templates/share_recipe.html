@@ -32,7 +32,7 @@
         <br>
         <div class="form-group">
             <label for="ingredients">INGREDIENTS</label>
-            <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="450" required></textarea>
+            <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter recipe ingredients (Separate each ingredient on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="1500" required></textarea>
             {% if error_ingredients %}
             <span class="error_conf">{{ error_ingredients }}</span>
             {% endif %}
@@ -48,7 +48,7 @@
         <br>
         <div class="form-group">
             <label for="instructions">INSTRUCTIONS</label>
-            <textarea class="form-control" id="instructions" name="instructions" placeholder="Enter recipe instructions (Separate each instruction on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="450" required></textarea>
+            <textarea class="form-control" id="instructions" name="instructions" placeholder="Enter recipe instructions (Separate each instruction on a new line by hitting the enter key after each ingredient)" rows="3" maxlength="2000" required></textarea>
             {% if error_instructions %}
             <span class="error_conf">{{ error_instructions }}</span>
             {% endif %}

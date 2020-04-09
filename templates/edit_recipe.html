@@ -47,10 +47,10 @@
         <div class="form-group">
             <label for="ingredients">INGREDIENTS (Separate each ingredient on a new line by hitting the enter key after each ingredient)</label>
             {% if error_ingredients %}
-            <textarea class="form-control" id="ingredients" name="ingredients" rows="3" maxlength="450" required></textarea>
+            <textarea class="form-control" id="ingredients" name="ingredients" rows="3" maxlength="1500" required></textarea>
             <span class="error_conf">{{ error_ingredients }}</span>
             {% else %}
-            <textarea class="form-control" id="ingredients" name="ingredients" rows="3" value="{{recipe.ingredients}}" maxlength="450" required>{{recipe.ingredients}}</textarea>
+            <textarea class="form-control" id="ingredients" name="ingredients" rows="3" value="{{recipe.ingredients}}" maxlength="1500" required>{{recipe.ingredients}}</textarea>
 
             {% endif %}
         </div>
@@ -70,10 +70,10 @@
         <div class="form-group">
             <label for="instructions">INSTRUCTIONS (Separate each instruction on a new line by hitting the enter key after each instruction)</label>
             {% if error_instructions %}
-            <textarea class="form-control" id="instructions" name="instructions" rows="3" maxlength="450" required></textarea>
+            <textarea class="form-control" id="instructions" name="instructions" rows="3" maxlength="2000" required></textarea>
             <span class="error_conf">{{ error_instructions }}</span>
             {% else %}
-            <textarea class="form-control" id="instructions" name="instructions" rows="3" value="{{recipe.instructions}}" maxlength="450" required>{{recipe.instructions}}</textarea>
+            <textarea class="form-control" id="instructions" name="instructions" rows="3" value="{{recipe.instructions}}" maxlength="2000" required>{{recipe.instructions}}</textarea>
 
             {% endif %}
         </div>

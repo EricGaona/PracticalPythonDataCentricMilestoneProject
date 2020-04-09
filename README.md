@@ -91,7 +91,121 @@ This project uses:
 
 * [W3C Markup Validation](https://validator.w3.org/)
 
-Vegetarian and Vegan:
+### Manual (logical) testing of all elements and functionality on every page
+
+#### Home Page:
+
+1. Navigation bar:
+
+i. Go to the "Home" page from a desktop.
+ii. Change the screen size from desktop to tablet to verify that the navigation bar is responsive and switches from in line menu to burger icon dropdown menu at the appropriate place.
+iii. Click on the logo in the navigation bar and verify that it links to the home page.
+vi. Click on each navigation menu item and verify that it links to the correct page.
+
+2. All Recipes section 
+
+i. Show the name, description and image of all the recipes in the database.
+ii. Click on the name or the image and verify that it links to the recipe page.
+
+#### Vegetarian Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Vegetarian Recipes
+
+i. Show the name, description and image of all the Vegetarian recipes in the database.
+ii. Click on the name or the image and verify that it links to the recipe page.
+
+#### Vegan Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Vegan Recipes
+
+i. Show the name, description and image of all the Vegan recipes in the database.
+ii. Click on the name or the image and verify that it links to the recipe page.
+
+#### Share Recipe Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Add Recipe Section
+
+i. Try to submit the name empty or with mare than 30 characters and verify that an error message about the required fields appears
+ii. Try to submit the form with an invalid image link and verify that a relevant error message appears
+iii. Try to submit the ingredients empty or with mare than 1500 characters and verify that an error message about the required fields appears
+iv. Try to submit the description empty or with mare than 300 characters and verify that an error message about the required fields appears
+v. Try to submit the instructions empty or with mare than 2000 characters and verify that an error message about the required fields appears
+vi. Try to submit the form with all inputs valid and verify that the recipe is added to the website.
+vii. Reduce and expand width of window to verify that the form display behaves and centres the way expected, and that it looks good on all device widths.
+
+#### recipe Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Recipe Section
+
+i. Show the name, description, image, ingredients, cooking tools and instructions of the recipe that was clicked in the Home Pega or in the Vegan or Vegetarian Page.
+ii. Click on the delete bottom and verify that it opens a small window to cancel or confirm the deleted.
+iii. Click on the the edit bottom and verify that it links to the edit page.
+
+#### Edit Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Add Recipe Section
+
+i. Try to submit the name empty or with mare than 30 characters and verify that an error message about the required fields appears
+ii. Try to submit the form with an invalid image link and verify that a relevant error message appears
+iii. Try to submit the ingredients empty or with mare than 1500 characters and verify that an error message about the required fields appears
+iv. Try to submit the description empty or with mare than 300 characters and verify that an error message about the required fields appears
+v. Try to submit the instructions empty or with mare than 2000 characters and verify that an error message about the required fields appears
+vi. Try to submit the form with all inputs valid and verify that the recipe is edited.
+vii. Reduce and expand width of window to verify that the form display behaves and centres the way expected, and that it looks good on all device widths.
+
+#### Cooking Tools Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. All Cooking Tools section 
+
+i. Show the name, description and image of all the Cooking Tools in the cooking_tools.json file.
+ii. Click on the name or the image and verify that it links to the Tool page.
+
+
+#### Tool Page:
+
+1. Navigation bar:
+
+i. Repeat verification steps done for navbar on Home page.
+ii. Confirm that navbar code is identical on all html pages.
+
+2. Cooking Tools section 
+
+i. Show the name, description and image of the Cooking Tool that is selected in the Cooking Tools Page or in the Recipe page.
+ii. Show the name and image of the recipes that use that Cooking Tool.
+
+
+
+
 
 When we click the delete button, we open a confirmation window that asks “Are you sure you want to delete this recipe?” with an OK button to confirm and another button to cancel. If the user confirms they want to delete, all the information on the recipe will be deleted from the database. If the user doesn’t confirm they want to delete they will be returned to the previous page. 
 When the edit button is clicked, it opens a form with all the recipe information and it allows the user to edit the files.  

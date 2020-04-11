@@ -218,6 +218,7 @@ This website was tested across multiple browsers including Chrome, Opera, Intern
 ## Deployment
 
 This project was developed using the Cloud9 IDE, committed to git, pushed to GitHub and Heroku using the built in function within cloud9.
+The database is hosted in mongoDB.
 
 ### How to run this project in Heroku
 

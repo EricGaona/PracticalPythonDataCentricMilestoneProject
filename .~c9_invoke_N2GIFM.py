@@ -169,14 +169,26 @@ def delete_recipe(recipe_id):
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     """
-    THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html AND recipe_category.html  
+    THIS FUNCTION SHOWS THE SELECTED RECIPE IN index.html AND recipe_category.html   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     """
     the_recipe_id =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     all_recipes=mongo.db.recipes.find()
-    the_recipe_id=the_recipe_id
-
+    the_recipe_id= the_recipe_id
+    recipes = mongo.db.recipes.find()
+    recipe_title=[]
+    for recipe in recipes:
+        if '_id' in recipe:
+            if the_recipe_id == recipe["_id"]:
+                print("entra")
+                recipe_title = recipe["name"]
+                break
+            
+    print("the_recipe_id")    
+    print("hola_3")        
+    print(recipe_title)
+    print("hola_4")
     return render_template("recipe.html", the_recipe_id=the_recipe_id, 
-                            all_recipes=all_recipes, title="Recipe") 
+                            all_recipes=all_recipes, title=recipe_title) 
 
 
 @app.route("/cooking_tools")

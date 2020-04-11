@@ -61,7 +61,6 @@ Contact
 The Contact Page features a contact form, which requests the name of the person, email, phone number and message.  The button of the form contains a send button. 
 
 
-
 ### Features to implement in future
 
 * Create a database where users can create their own login account and then, only people who own an account can carry out the actions of Delete, Share and Edit.  The public can still read all recipes but only account holder can make changes and upload new recipes. 
@@ -69,6 +68,7 @@ The Contact Page features a contact form, which requests the name of the person,
 * Create an interface for when a user shares a recipe the interface sends a message to the admin to confirm the recipe. 
 * Option to choose the language of the website as the admin’s first language is Spanish, this would allow Spanish speaking users to view in their native language.
 * Create a pagination for the recipes
+
 
 ## Technologies Used
 
@@ -107,6 +107,7 @@ vi. Click on each navigation menu item and verify that it links to the correct p
 i. Show the name, description and image of all the recipes in the database.
 ii. Click on the name or the image and verify that it links to the recipe page.
 
+
 #### Vegetarian Page:
 
 1. Navigation bar:
@@ -119,6 +120,7 @@ ii. Confirm that navbar code is identical on all html pages.
 i. Show the name, description and image of all the Vegetarian recipes in the database.
 ii. Click on the name or the image and verify that it links to the recipe page.
 
+
 #### Vegan Page:
 
 1. Navigation bar:
@@ -130,6 +132,7 @@ ii. Confirm that navbar code is identical on all html pages.
 
 i. Show the name, description and image of all the Vegan recipes in the database.
 ii. Click on the name or the image and verify that it links to the recipe page.
+
 
 #### Share Recipe Page:
 
@@ -148,6 +151,7 @@ v. Try to submit the instructions empty or with mare than 2000 characters and ve
 vi. Try to submit the form with all inputs valid and verify that the recipe is added to the website.
 vii. Reduce and expand width of window to verify that the form display behaves and centres the way expected, and that it looks good on all device widths.
 
+
 #### recipe Page:
 
 1. Navigation bar:
@@ -160,6 +164,7 @@ ii. Confirm that navbar code is identical on all html pages.
 i. Show the name, description, image, ingredients, cooking tools and instructions of the recipe that was clicked in the Home Pega or in the Vegan or Vegetarian Page.
 ii. Click on the delete bottom and verify that it opens a small window to cancel or confirm the deleted.
 iii. Click on the the edit bottom and verify that it links to the edit page.
+
 
 #### Edit Page:
 
@@ -177,6 +182,7 @@ iv. Try to submit the description empty or with mare than 300 characters and ver
 v. Try to submit the instructions empty or with mare than 2000 characters and verify that an error message about the required fields appears
 vi. Try to submit the form with all inputs valid and verify that the recipe is edited.
 vii. Reduce and expand width of window to verify that the form display behaves and centres the way expected, and that it looks good on all device widths.
+
 
 #### Cooking Tools Page:
 
@@ -204,21 +210,35 @@ i. Show the name, description and image of the Cooking Tool that is selected in 
 ii. Show the name and image of the recipes that use that Cooking Tool.
 
 
-
-
-
-When we click the delete button, we open a confirmation window that asks “Are you sure you want to delete this recipe?” with an OK button to confirm and another button to cancel. If the user confirms they want to delete, all the information on the recipe will be deleted from the database. If the user doesn’t confirm they want to delete they will be returned to the previous page. 
-When the edit button is clicked, it opens a form with all the recipe information and it allows the user to edit the files.  
-Once the user is happy with their edits they should click the save button at the bottom of the form. 
-
-Share Recipe:
-
-The Share Recipe tab takes the user to a form.  Every section of the form is compulsory to be completed in order to share a recipe. The Name of Recipe box only accepts a maximum of 30 characters.  The image should be a URL.  The ingredients a maximum of 450 characters and the description a maximum of 350 characters. 
-At the bottom, there is a submit button to save and share recipe. When the Submit button is clicked it sends the information to the database and then redirects the user to the homepage. 
+#### Review all functionality and responsiveness:
 
 This website was tested across multiple browsers including Chrome, Opera, Internet Explorer, Firefox and on multiple movie devices including iPhone 4, 5, and 7.  Also on Samsung and Xaomi to ensure compatibility and responsiveness.
 
 
+## Deployment
+
+This project was developed using the Cloud9 IDE, committed to git, pushed to GitHub and Heroku using the built in function within cloud9.
+
+### How to run this project in Heroku
+
+Follow this link [cookbook](https://cookbookproject.herokuapp.com/)
 
 
+#### Credits
 
+### Content
+
+* The texts, recipes and ingredients for the website were copied from [bbcgoodfood.com](https://www.bbcgoodfood.com/)
+* The texts for the cooking tools were copied from [/www.argos.co.uk]( https://www.argos.co.uk/)  
+
+### Media
+
+* All the images of recipes for the website were copied from [bbcgoodfood.com](https://www.bbcgoodfood.com/)
+* All the images of recipes for the cooking tools were copied from [/www.argos.co.uk]( https://www.argos.co.uk/)
+
+
+#### Acknowledgements
+
+* I took the idea for this Project from the module list of recommend ideas for project.
+* My mentor Brian Macharia guided me towards whole the process of design and creation of the website.
+* All the team of tutors who helped throughout the realization of this project.

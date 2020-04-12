@@ -25,9 +25,7 @@ def recipes(category):
     THIS FUNCTION SEPARATES VEGANS AND VEGETARIAS
     """
     recipes = mongo.db.recipes.find({"category_name": category})
-    print("hola_1")
-    print(category)
-    print("hola_2")
+   
     return render_template("recipe_category.html",
                   recipes=recipes,
                   page_title=category.capitalize()
